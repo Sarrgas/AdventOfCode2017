@@ -8,6 +8,7 @@ namespace Spiral_Memory
 {
     class Program
     {
+        int input = 12;
         public void Start()
         {
 

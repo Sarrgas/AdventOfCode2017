@@ -1,14 +1,21 @@
 pipeline {
-  agent any
-  stages {
-    stage('Checkout'){
-      checkout scm
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-    stage('Build') {
-      steps {
-	bat "nuget restore \"/01/Inverse Captcha/InverseCaptcha.sln\""
-	bat "\"${tool 'MSBuild'}\" \"/01/Inverse Captcha/InverseCaptcha.sln\" /p:Configuration=Release /p:Platform=\"Any CPU\""
-      }
-    }
-  }
 }

@@ -6,6 +6,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                bat 'nuget restore \"01/Inverse Captcha/Inverse Captcha.sln\"'
+		        bat "\"${tool 'MSBuild'}\" \"01/Inverse Captcha/Inverse Captcha.sln\" /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
             }
         }
         stage('Test') {

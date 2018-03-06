@@ -20,6 +20,11 @@ pipeline {
 		echo 'Testing..'
 	    }
 	}
+        stage('Archive'){
+		steps {
+			archive '\"Inverse Captcha/bin/Release/**\"'
+		}
+        }
 	stage('Deploy') {
 	    steps {
 		echo 'Deploying....'
